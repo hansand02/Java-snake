@@ -21,6 +21,10 @@ public class ControllerSnake {
     public void lagKropp() {
         this.gui.lagKropp();
     }
+    public void avsluttSpill() {
+        gui.avsluttSpill();
+        aktivThread.stop();
+    }
 
     public void bevegVenstre() {
         if(aktivThread != null) {

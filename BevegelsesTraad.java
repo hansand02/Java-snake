@@ -20,7 +20,7 @@ public class BevegelsesTraad implements Runnable
             }
         }
         try {
-            Thread.sleep(250);
+            Thread.sleep(150);
         } catch (Exception e) {
 
         }
@@ -38,7 +38,7 @@ public class BevegelsesTraad implements Runnable
             this.model.bevegNed();
         }
         try {
-            Thread.sleep(250);
+            Thread.sleep(150);
         } catch (Exception e) {
 
         }
