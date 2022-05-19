@@ -145,7 +145,7 @@ public class GUI implements ActionListener
         if(controller.rute.size() > 0) {
 
             for(int i = 1; i< controller.backEnd.slangeLengde(); i++) {
-                controller.rute.get(controller.rute.size()-1).setBackground(Color.orange);
+                controller.rute.get(controller.rute.size()-(i)).setBackground(Color.orange);
             }
         }
     }
