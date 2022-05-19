@@ -11,12 +11,10 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 
-// 
-// Decompiled by Procyon v0.5.36
-// 
 
 public class GUI implements ActionListener
 {
@@ -38,19 +36,18 @@ public class GUI implements ActionListener
     ControllerSnake controller;
     
     GUI(final ControllerSnake controller) {
-        this.poeng = 0;
+       
         this.frame = new JFrame("Slithery Snake SSSS");
         this.heleVinduet = new JPanel(new BorderLayout());
         this.spillBrett = new JPanel(new GridLayout(12, 12));
         this.kontrollPanel = new JPanel(new BorderLayout());
-        this.statistikk = new JPanel(new GridLayout(1, 3));
+        this.statistikk = new JPanel();
         this.hoyreOgVenstre = new JPanel(new GridLayout(1, 0));
         this.venstre = new JButton("Venstre");
-        this.hoyre = new JButton("H\u00c3Â¸yre");
+        this.hoyre = new JButton("Høyre");
         this.opp = new JButton("Opp");
         this.ned = new JButton("Ned");
         this.score = new JLabel("   Score: " + this.poeng, 2);
-        this.highScore = new JLabel("   Highscore: ", 2);
         this.grid = new JLabel[12][12];
         this.controller = controller;
         
@@ -86,10 +83,9 @@ public class GUI implements ActionListener
         this.statistikk.setPreferredSize(new Dimension(600, 100));
         this.statistikk.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 
+        
         this.score.setFont(new Font("Serif", 1, 30));
-        this.highScore.setFont(new Font("Serif", 1, 30));
         this.statistikk.add(this.score);
-        this.statistikk.add(this.highScore);
 
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < 12; ++j) {
@@ -131,5 +127,27 @@ public class GUI implements ActionListener
         this.hoyre.setEnabled(false);
         this.opp.setEnabled(false);
         this.ned.setEnabled(false);
+        this.score.setText("Du tapte, prøv igjen");
     }
+
+    public void lagEple() {
+        int tall1 = (int)(Math.random()*(11+1));
+        int tall2 = (int)(Math.random()*(11+1));
+        grid[tall1][tall2].setText("O");
+        grid[tall1][tall2].setFont(new Font("Ink Free", 1, 30));
+        grid[tall1][tall2].setAlignmentX(JLabel.CENTER);
+    }
+
+    public void lagKropp() {
+        for(JLabel ruter: this.controller.rute) {
+            ruter.setBackground(Color.white);
+        }
+        if(controller.rute.size() > 0) {
+
+            for(int i = 1; i< controller.backEnd.slangeLengde(); i++) {
+                controller.rute.get(controller.rute.size()-1).setBackground(Color.orange);
+            }
+        }
+    }
+    
 }
