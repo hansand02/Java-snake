@@ -1,22 +1,21 @@
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.KeyListener;
+import javax.sound.sampled.Control;
 import javax.swing.BorderFactory;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.UIManager;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 
 
-public class GUI implements ActionListener
+public class GUI implements ActionListener 
 {
     int poeng;
     JFrame frame;
@@ -34,6 +33,7 @@ public class GUI implements ActionListener
     JLabel[][] grid;
     JLabel hode;
     ControllerSnake controller;
+    KeyInput keyInput;
     
     GUI(final ControllerSnake controller) {
        
@@ -60,12 +60,17 @@ public class GUI implements ActionListener
         this.hoyre.addActionListener(this);
         this.opp.addActionListener(this);
         this.ned.addActionListener(this);
+        frame.addKeyListener((KeyListener) (keyInput = new KeyInput(this.controller)));
+        frame.setFocusable(true);
+        frame.requestFocus();
 
-        this.frame.setDefaultCloseOperation(3);
-        this.frame.setSize(new Dimension(600, 850));
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(new Dimension(600, 700));
         this.frame.add(this.heleVinduet);
 
-        this.kontrollPanel.setBackground(new Color(70, 120, 70));
+
+        // FJERNET ALLE KNAPPER DA MAN KAN BRUKE TASTATURET NÅ
+        /* this.kontrollPanel.setBackground(new Color(70, 120, 70));
         this.kontrollPanel.setOpaque(true);
         this.kontrollPanel.setPreferredSize(new Dimension(600, 150));
         this.kontrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
@@ -76,7 +81,7 @@ public class GUI implements ActionListener
         this.hoyreOgVenstre.add(this.hoyre);
         this.kontrollPanel.add(this.opp, "North");
         this.kontrollPanel.add(this.ned, "South");
-        this.kontrollPanel.add(this.hoyreOgVenstre, "Center");
+        this.kontrollPanel.add(this.hoyreOgVenstre, "Center"); */
 
         this.statistikk.setBackground(new Color(70, 120, 70));
         this.statistikk.setOpaque(true);
@@ -127,7 +132,16 @@ public class GUI implements ActionListener
         this.hoyre.setEnabled(false);
         this.opp.setEnabled(false);
         this.ned.setEnabled(false);
+        keyInput = null;
+
         this.score.setText("Du tapte, prøv igjen");
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        frame.dispose();
+
     }
 
     public void lagEple() {

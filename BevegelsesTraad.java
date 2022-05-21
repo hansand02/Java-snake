@@ -8,6 +8,10 @@ public class BevegelsesTraad implements Runnable
         this.model = model;
         this.retning = retning;
     }
+
+    public String retning() {
+        return retning;
+    }
     
     @Override
     public void run() {

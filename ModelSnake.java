@@ -1,8 +1,6 @@
 import java.awt.Color;
 import javax.swing.JLabel;
 
-
-
 public class ModelSnake
 {
     ControllerSnake controller;
