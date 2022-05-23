@@ -22,7 +22,6 @@ class KeyInput extends KeyAdapter {
         else if (keyCode == KeyEvent.VK_RIGHT) {
             controller.bevegHoyre();
         }
-     
         controller.gui.frame.addKeyListener(controller.gui.keyInput);
     }
 }

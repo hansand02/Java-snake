@@ -120,10 +120,10 @@ public class GUI
     } */
     
     public void avsluttSpill() {
-        this.venstre.setEnabled(false);
+        /* this.venstre.setEnabled(false);
         this.hoyre.setEnabled(false);
         this.opp.setEnabled(false);
-        this.ned.setEnabled(false);
+        this.ned.setEnabled(false); */
         frame.removeKeyListener(keyInput);
 
         this.score.setText("Du tapte, prøv igjen");
@@ -144,12 +144,14 @@ public class GUI
         for(int i=0; i<12;i++) {
             for(int j=0; j<12; j++) {
                 grid[i][j].setBackground(Color.white);
+                grid[i][j].setIcon(null);
             }
         }
         frame.addKeyListener(keyInput);
         (this.hode = this.grid[6][6]).setBackground(Color.green);
         score.setText(("   Score: 0"));
         controller.resettSlange();
+        lagEple();
 
 
     }
@@ -162,17 +164,15 @@ public class GUI
         int tall1 = (int)(Math.random()*(11+1));
         int tall2 = (int)(Math.random()*(11+1));
         grid[tall1][tall2].setIcon(imageIcon);
-        if(tall1*tall2 == 12 || tall1*tall2 == 24) {
+        if(tall1*tall2 < 24 || tall1*tall2 > 100) {
             lagGullEple();
         }
-
-        
     }
 
     public void lagGullEple() {
         ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("gulleple.jpg")));
         Image image = userIcon.getImage();
-        Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
+        Image scaledIcon = image.getScaledInstance(45,46,java.awt.Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledIcon);
         int tall1 = (int)(Math.random()*(11+1));
         int tall2 = (int)(Math.random()*(11+1));
@@ -183,8 +183,7 @@ public class GUI
         for(JLabel ruter: this.controller.rute) {
             ruter.setBackground(Color.white);
         }
-        if(controller.rute.size() > 0) {
-
+        if(controller.rute.size() > controller.backEnd.slangeLengde()) {
             for(int i = 1; i< controller.backEnd.slangeLengde(); i++) {
                 controller.rute.get(controller.rute.size()-(i)).setBackground(Color.orange);
             }

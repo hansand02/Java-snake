@@ -1,4 +1,7 @@
 import java.awt.Color;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class ModelSnake
@@ -14,6 +17,11 @@ public class ModelSnake
     
 
     public void sjekkOgSpisEple(JLabel label) {
+        if(label.getIcon().getIconHeight() == 46) {
+            lengde += 10;
+            label.setIcon(null);
+            return;
+        }
         label.setIcon(null);
         lengde++;
         this.controller.gui.score.setText("   Score: " + (this.controller.backEnd.slangeLengde()-1));
