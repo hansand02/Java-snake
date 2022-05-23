@@ -18,17 +18,13 @@ public class BevegelsesTraad implements Runnable
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < 12; ++j) {
                 if (this.model.controller.gui.hode.equals(this.model.controller.gui.grid[i][j]) 
-                && this.model.controller.gui.grid[i][j].getText().compareTo("O")==0) {
+                && this.model.controller.gui.grid[i][j].getIcon() != null) {
                     this.model.sjekkOgSpisEple(this.model.controller.gui.grid[i][j]);
                 }
             }
         }
-        try {
-            Thread.sleep(150);
-        } catch (Exception e) {
-
-        }
-
+       
+        
         if(retning.compareTo("hoyre") == 0 ) {
             this.model.bevegHoyre();
         }
@@ -42,10 +38,15 @@ public class BevegelsesTraad implements Runnable
             this.model.bevegNed();
         }
         try {
-            Thread.sleep(150);
-        } catch (Exception e) {
 
+            // 80 er sleeptiden slangen ender paa, 380 blir tiden ved lengde = 1
+            Thread.sleep(
+            (300+80*model.slangeLengde())/(model.slangeLengde())
+            );
+        } catch (Exception e) {
+            
         }
+        
         run();
     }
 }

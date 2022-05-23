@@ -1,13 +1,7 @@
-import java.awt.LayoutManager;
-import java.awt.Component;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
-
-// 
-// Decompiled by Procyon v0.5.36
-// 
 
 public class PanelExample
 {

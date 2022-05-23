@@ -13,6 +13,12 @@ public class ControllerSnake {
         gui = new GUI(this);
         backEnd = new ModelSnake(this);
     }
+
+    public void resettSlange() {
+        backEnd.resettSlange();
+        rute.clear();
+
+    }
     
     public void lagEple() {
         this.gui.lagEple();
@@ -27,7 +33,7 @@ public class ControllerSnake {
 
     public void bevegVenstre() {
         if(aktivThread != null) {
-            if (aktivBevegelsesTraad.retning().compareTo("hoyre") == 0) {
+            if (aktivBevegelsesTraad.retning().compareTo("hoyre") == 0 ||aktivBevegelsesTraad.retning().compareTo("venstre") == 0 ) {
                 return;
             }
             aktivThread.stop();
@@ -39,7 +45,7 @@ public class ControllerSnake {
     }
     public void bevegHoyre() {
         if(aktivThread != null) {
-            if (aktivBevegelsesTraad.retning().compareTo("venstre") == 0) {
+            if (aktivBevegelsesTraad.retning().compareTo("venstre") == 0 || aktivBevegelsesTraad.retning().compareTo("hoyre") == 0 ) {
                 return;
             }
             aktivThread.stop();
@@ -51,7 +57,7 @@ public class ControllerSnake {
     }
     public void bevegOpp() {
         if(aktivThread != null) {
-            if (aktivBevegelsesTraad.retning().compareTo("ned") == 0) {
+            if (aktivBevegelsesTraad.retning().compareTo("ned") == 0 || aktivBevegelsesTraad.retning().compareTo("opp") == 0) {
                 return;
             }
             aktivThread.stop();
@@ -62,7 +68,7 @@ public class ControllerSnake {
     }
     public void bevegNed() {
         if(aktivThread != null) {
-            if (aktivBevegelsesTraad.retning().compareTo("opp") == 0) {
+            if (aktivBevegelsesTraad.retning().compareTo("opp") == 0 || aktivBevegelsesTraad.retning().compareTo("ned") == 0) {
                 return;
             }
             aktivThread.stop();

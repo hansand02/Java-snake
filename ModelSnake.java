@@ -14,12 +14,10 @@ public class ModelSnake
     
 
     public void sjekkOgSpisEple(JLabel label) {
-        if(label.getText().compareTo("O") == 0) {
-            label.setText("");
-            lengde++;
-            this.controller.gui.score.setText("   Score: " + this.controller.backEnd.slangeLengde());
-            this.controller.lagEple();
-        }
+        label.setIcon(null);
+        lengde++;
+        this.controller.gui.score.setText("   Score: " + (this.controller.backEnd.slangeLengde()-1));
+        this.controller.lagEple();
         
         
     }
@@ -27,7 +25,9 @@ public class ModelSnake
     public int slangeLengde() {
         return lengde;
     }
-    
+    public void resettSlange() {
+        lengde = 1;
+    }
     
     public void bevegVenstre() {
         for (int i = 0; i < 12; ++i) {
@@ -44,7 +44,7 @@ public class ModelSnake
                         this.controller.rute.add(this.controller.gui.hode);
                     }
                     else if (j == 0) {
-                        this.controller.gui.avsluttSpill();
+                        this.controller.avsluttSpill();
                     }
                     return;
                 }
@@ -67,7 +67,7 @@ public class ModelSnake
                         this.controller.rute.add(this.controller.gui.hode);
                     }
                     else if (j == 11) {
-                        this.controller.gui.avsluttSpill();
+                        this.controller.avsluttSpill();
                     }
                     return;
                 }
@@ -90,7 +90,7 @@ public class ModelSnake
                         this.controller.rute.add(this.controller.gui.hode);
                     }
                     else if (i == 0) {
-                        this.controller.gui.avsluttSpill();
+                        this.controller.avsluttSpill();
                     }
                     return;
                 }
@@ -113,7 +113,7 @@ public class ModelSnake
                         this.controller.rute.add(this.controller.gui.hode);
                     }
                     else if (i == 11) {
-                        this.controller.gui.avsluttSpill();
+                        this.controller.avsluttSpill();
                     }
                     return;
                 }

@@ -1,21 +1,10 @@
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.event.KeyListener;
-import javax.sound.sampled.Control;
-import javax.swing.BorderFactory;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.UIManager;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import javax.swing.*;
+import java.util.Objects;
+import java.awt.event.*;
 
-
-public class GUI implements ActionListener 
+//HUSK AA IMPLEMENTERE ACTIONLISTENER HVIS DU SKAL LEGGE TIL KNAPPENE IGJEN
+public class GUI 
 {
     int poeng;
     JFrame frame;
@@ -56,10 +45,10 @@ public class GUI implements ActionListener
         }
         catch (Exception ex) {}
 
-        this.venstre.addActionListener(this);
+        /* this.venstre.addActionListener(this);
         this.hoyre.addActionListener(this);
         this.opp.addActionListener(this);
-        this.ned.addActionListener(this);
+        this.ned.addActionListener(this); */
         frame.addKeyListener((KeyListener) (keyInput = new KeyInput(this.controller)));
         frame.setFocusable(true);
         frame.requestFocus();
@@ -94,11 +83,13 @@ public class GUI implements ActionListener
 
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < 12; ++j) {
-                final JLabel comp = new JLabel();
-                comp.setSize(new Dimension(3, 3));
+                JLabel comp = new JLabel();
+                comp.setPreferredSize(new Dimension(40,40));
                 comp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
                 comp.setOpaque(true);
                 comp.setBackground(Color.white);
+                comp.setHorizontalAlignment(JLabel.CENTER);
+                comp.setVerticalAlignment(JLabel.BOTTOM);
                 this.grid[i][j] = comp;
                 this.spillBrett.add(comp);
             }
@@ -111,7 +102,8 @@ public class GUI implements ActionListener
         this.frame.setVisible(true);
     }
     
-    @Override
+    //FJERNET KNAPPER SAA TRENGER IKKE DETTE 
+   /*  @Override
     public void actionPerformed(final ActionEvent actionEvent) {
         if (actionEvent.getSource() == this.venstre) {
             this.controller.bevegVenstre();
@@ -125,31 +117,66 @@ public class GUI implements ActionListener
         else if (actionEvent.getSource() == this.ned) {
             this.controller.bevegNed();
         }
-    }
+    } */
     
     public void avsluttSpill() {
         this.venstre.setEnabled(false);
         this.hoyre.setEnabled(false);
         this.opp.setEnabled(false);
         this.ned.setEnabled(false);
-        keyInput = null;
+        frame.removeKeyListener(keyInput);
 
         this.score.setText("Du tapte, prøv igjen");
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for(int i=3; i> -2; i--) {
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+            score.setText(""+i);
+            if(i==0) {
+                score.setText("Start");
+            }
+            
         }
-        frame.dispose();
+        for(int i=0; i<12;i++) {
+            for(int j=0; j<12; j++) {
+                grid[i][j].setBackground(Color.white);
+            }
+        }
+        frame.addKeyListener(keyInput);
+        (this.hode = this.grid[6][6]).setBackground(Color.green);
+        score.setText(("   Score: 0"));
+        controller.resettSlange();
+
 
     }
 
     public void lagEple() {
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("bilde.jpg")));
+        Image image = userIcon.getImage();
+        Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(scaledIcon);
         int tall1 = (int)(Math.random()*(11+1));
         int tall2 = (int)(Math.random()*(11+1));
-        grid[tall1][tall2].setText("O");
-        grid[tall1][tall2].setFont(new Font("Ink Free", 1, 30));
-        grid[tall1][tall2].setAlignmentX(JLabel.CENTER);
+        grid[tall1][tall2].setIcon(imageIcon);
+        if(tall1*tall2 == 12 || tall1*tall2 == 24) {
+            lagGullEple();
+        }
+
+        
+    }
+
+    public void lagGullEple() {
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("gulleple.jpg")));
+        Image image = userIcon.getImage();
+        Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(scaledIcon);
+        int tall1 = (int)(Math.random()*(11+1));
+        int tall2 = (int)(Math.random()*(11+1));
+        grid[tall1][tall2].setIcon(imageIcon);
     }
 
     public void lagKropp() {

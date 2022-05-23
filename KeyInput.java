@@ -6,12 +6,9 @@ class KeyInput extends KeyAdapter {
     KeyInput(ControllerSnake controller2) {
         controller = controller2;
     }
-    public void avsluttLytting() {
-        
-    }
 
     public void keyPressed(KeyEvent e) {
-                    
+        controller.gui.frame.removeKeyListener(controller.gui.keyInput);
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_UP) {
             controller.bevegOpp();
@@ -25,5 +22,7 @@ class KeyInput extends KeyAdapter {
         else if (keyCode == KeyEvent.VK_RIGHT) {
             controller.bevegHoyre();
         }
+     
+        controller.gui.frame.addKeyListener(controller.gui.keyInput);
     }
 }
