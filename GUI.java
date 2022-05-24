@@ -164,19 +164,20 @@ public class GUI
         int tall1 = (int)(Math.random()*(11+1));
         int tall2 = (int)(Math.random()*(11+1));
         grid[tall1][tall2].setIcon(imageIcon);
-        if(tall1*tall2 < 24 || tall1*tall2 > 100) {
+        if((tall1*tall2)%6 ==0) {
             lagGullEple();
         }
     }
 
     public void lagGullEple() {
-        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("gulleple.jpg")));
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("dompa.jpg")));
         Image image = userIcon.getImage();
-        Image scaledIcon = image.getScaledInstance(45,46,java.awt.Image.SCALE_SMOOTH);
+        Image scaledIcon = image.getScaledInstance(46,46,java.awt.Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledIcon);
         int tall1 = (int)(Math.random()*(11+1));
         int tall2 = (int)(Math.random()*(11+1));
         grid[tall1][tall2].setIcon(imageIcon);
+        score.setText("Dom Peringon 2005 incoming");
     }
 
     public void lagKropp() {

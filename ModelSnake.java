@@ -18,8 +18,9 @@ public class ModelSnake
 
     public void sjekkOgSpisEple(JLabel label) {
         if(label.getIcon().getIconHeight() == 46) {
-            lengde += 10;
+            lengde += 3;
             label.setIcon(null);
+            this.controller.gui.score.setText("Keegt");
             return;
         }
         label.setIcon(null);

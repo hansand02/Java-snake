@@ -28,7 +28,7 @@ public class ControllerSnake {
     }
     public void avsluttSpill() {
         gui.avsluttSpill();
-        aktivThread.stop();
+        aktivBevegelsesTraad.stopThread();
     }
 
     public void bevegVenstre() {
@@ -36,7 +36,7 @@ public class ControllerSnake {
             if (aktivBevegelsesTraad.retning().compareTo("hoyre") == 0 ||aktivBevegelsesTraad.retning().compareTo("venstre") == 0 ) {
                 return;
             }
-            aktivThread.stop();
+            aktivBevegelsesTraad.stopThread();
         }
         Thread t1 = new Thread(aktivBevegelsesTraad = new BevegelsesTraad(backEnd, "venstre"));
         aktivThread = t1;
@@ -48,7 +48,7 @@ public class ControllerSnake {
             if (aktivBevegelsesTraad.retning().compareTo("venstre") == 0 || aktivBevegelsesTraad.retning().compareTo("hoyre") == 0 ) {
                 return;
             }
-            aktivThread.stop();
+            aktivBevegelsesTraad.stopThread();
         }
         Thread t1 = new Thread(aktivBevegelsesTraad = new BevegelsesTraad(backEnd, "hoyre"));
         aktivThread = t1;
@@ -60,7 +60,7 @@ public class ControllerSnake {
             if (aktivBevegelsesTraad.retning().compareTo("ned") == 0 || aktivBevegelsesTraad.retning().compareTo("opp") == 0) {
                 return;
             }
-            aktivThread.stop();
+            aktivBevegelsesTraad.stopThread();
         }
         Thread t1 = new Thread(aktivBevegelsesTraad = new BevegelsesTraad(backEnd, "opp"));
         aktivThread = t1;
@@ -71,7 +71,7 @@ public class ControllerSnake {
             if (aktivBevegelsesTraad.retning().compareTo("opp") == 0 || aktivBevegelsesTraad.retning().compareTo("ned") == 0) {
                 return;
             }
-            aktivThread.stop();
+            aktivBevegelsesTraad.stopThread();
         }
         Thread t1 = new Thread(aktivBevegelsesTraad = new BevegelsesTraad(backEnd, "ned"));
         aktivThread = t1;

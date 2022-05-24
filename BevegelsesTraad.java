@@ -3,6 +3,7 @@ public class BevegelsesTraad implements Runnable
 {
     ModelSnake model;
     String retning;
+    private Boolean notStopped = true;
     
     BevegelsesTraad(final ModelSnake model, String retning) {
         this.model = model;
@@ -13,6 +14,10 @@ public class BevegelsesTraad implements Runnable
         return retning;
     }
     
+    public void stopThread() {
+        notStopped = false;
+    }
+
     @Override
     public void run() {
         for (int i = 0; i < 12; ++i) {
@@ -40,13 +45,19 @@ public class BevegelsesTraad implements Runnable
         try {
 
             // 80 er sleeptiden slangen ender paa, 380 blir tiden ved lengde = 1
-            Thread.sleep(
+            /* Thread.sleep(
             (300+80*model.slangeLengde())/(model.slangeLengde())
-            );
+            ); */
+            Thread.sleep(400);  
+            
         } catch (Exception e) {
             
         }
+        if(notStopped) {
+            run();
+        }
         
-        run();
     }
+
+
 }
