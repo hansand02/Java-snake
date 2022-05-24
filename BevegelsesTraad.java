@@ -44,12 +44,12 @@ public class BevegelsesTraad implements Runnable
         }
         try {
 
-            // 80 er sleeptiden slangen ender paa, 380 blir tiden ved lengde = 1
-            /* Thread.sleep(
+            //80 er sleeptiden slangen ender paa, 380 blir tiden ved lengde = 1
+            Thread.sleep(
             (300+80*model.slangeLengde())/(model.slangeLengde())
-            ); */
-            Thread.sleep(400);  
-            
+            ); 
+
+
         } catch (Exception e) {
             
         }
