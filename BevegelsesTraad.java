@@ -16,6 +16,7 @@ public class BevegelsesTraad implements Runnable
     
     public void stopThread() {
         notStopped = false;
+        retning = "null";
     }
 
     @Override

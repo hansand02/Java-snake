@@ -11,7 +11,7 @@ public class ModelSnake
     
     ModelSnake(final ControllerSnake controller) {
         this.controller = controller;
-        this.controller.lagEple();
+        this.controller.lagFoersteEple();
     }
     
     

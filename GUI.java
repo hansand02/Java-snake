@@ -145,15 +145,29 @@ public class GUI
             for(int j=0; j<12; j++) {
                 grid[i][j].setBackground(Color.white);
                 grid[i][j].setIcon(null);
+                if(i == 6 && j == 6) {
+                    grid[i][j].setBackground(Color.green);
+                }
             }
         }
-        frame.addKeyListener(keyInput);
-        (this.hode = this.grid[6][6]).setBackground(Color.green);
+        
+        this.hode = this.grid[6][6];
         score.setText(("   Score: 0"));
         controller.resettSlange();
-        lagEple();
+        lagFoersteEple();
+        frame.addKeyListener(keyInput);
 
 
+    }
+
+    public void lagFoersteEple() {
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("bilde.jpg")));
+        Image image = userIcon.getImage();
+        Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(scaledIcon);
+        int tall1 = (int)(Math.random()*(11+1));
+        int tall2 = (int)(Math.random()*(11+1));
+        grid[tall1][tall2].setIcon(imageIcon);
     }
 
     public void lagEple() {

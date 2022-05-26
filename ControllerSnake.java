@@ -20,6 +20,11 @@ public class ControllerSnake {
 
     }
     
+    //Denne brukes bare til aa lage foerste eple, saa vil ikke lage gulleple her
+    public void lagFoersteEple() {
+        this.gui.lagFoersteEple();
+    }
+    
     public void lagEple() {
         this.gui.lagEple();
     }
