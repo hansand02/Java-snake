@@ -161,7 +161,7 @@ public class GUI
     }
 
     public void lagFoersteEple() {
-        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("bilde.jpg")));
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/assets/bilde.jpg")));
         Image image = userIcon.getImage();
         Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledIcon);
@@ -171,7 +171,7 @@ public class GUI
     }
 
     public void lagEple() {
-        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("bilde.jpg")));
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/assets/bilde.jpg")));
         Image image = userIcon.getImage();
         Image scaledIcon = image.getScaledInstance(45,45,java.awt.Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledIcon);
@@ -184,7 +184,7 @@ public class GUI
     }
 
     public void lagGullEple() {
-        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("gulleple.jpg")));
+        ImageIcon userIcon = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/assets/gulleple.jpg")));
         Image image = userIcon.getImage();
         Image scaledIcon = image.getScaledInstance(46,46,java.awt.Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledIcon);
